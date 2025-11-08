@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashank A - Data Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        nav {
+            background: var(--bg);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        .summary {
+            background: var(--bg-alt);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-top: 3px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .highlight-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .experience-item, .education-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .experience-item h3, .education-item h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .job-title {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .date-location {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .experience-item ul, .education-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3::before {
+            content: "▸";
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-alt);
+            color: var(--text);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.05);
+        }
+
+        .cert-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: var(--text);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shashank A</h1>
+        <p>Data Engineer | AWS & Azure | Snowflake & Redshift | Python & SQL | ETL Pipelines</p>
+        <p style="font-size: 1rem; opacity: 0.9;">Microsoft Certified (PL-300, DP-203) | Open to Work</p>
+        <div class="contact-links">
+            <a href="tel:6176710656">📞 (617) 671-0656</a>
+            <a href="mailto:shashank1adepu@gmail.com">✉️ Email</a>
+            <a href="https://www.linkedin.com/in/shashank1ad" target="_blank">💼 LinkedIn</a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="summary">
+                <p>I am a dedicated and results-driven Data Engineer/Analyst with over 5 years of experience in delivering actionable insights that shape strategic decisions. My expertise spans the entire Software Development Life Cycle, Agile methodologies, and a variety of data analysis techniques with a strong technical background in Python, R, SQL, and a range of data visualization tools.</p>
+                <p style="margin-top: 1rem;">I'm passionate about using data to solve complex problems and deliver impactful business outcomes. Over the course of my career, I've had the opportunity to work with teams in the healthcare and finance sectors, building models, automating processes, and creating insightful dashboards.</p>
+            </div>
+
+            <div class="highlights">
+                <div class="highlight-card">
+                    <h3>🎯 25% Improvement</h3>
+                    <p>Improved predictive accuracy through implementation of time series forecasting models at Cigna</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>⚡ 35% Faster</h3>
+                    <p>Reduced processing time through automation of data cleaning and wrangling processes</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>📊 40% Efficiency</h3>
+                    <p>Increased reporting efficiency by developing interactive dashboards using Tableau, Power BI, and Qlik View</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>🚀 50% Reduction</h3>
+                    <p>Spearheaded data transformation project at Tata Capital, reducing processing times significantly</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <h3>Medsix</h3>
+                <div class="job-title">Data Engineer</div>
+                <div class="date-location">February 2024 - Present | Boston, Massachusetts</div>
+                <ul>
+                    <li>Leveraged Azure Databricks to build scalable analytics workflows, integrating with Apache Airflow and Apache Lambda for orchestrating complex data pipelines that ingest real-time sensor data from medical devices</li>
+                    <li>Designed, developed and maintained software applications for medical devices ensuring compliance with regulatory healthcare standards such as FDA and ISO 13485</li>
+                    <li>Modeled and optimized scalable data pipelines using Informatica and AWS services (S3, EC2, EMR) ensuring efficient dataflow across Snowflake, Oracle and AWS Redshift</li>
+                    <li>Implemented Alteryx workflows for ETL/ELT processes, improving data ingestion efficiency by 20%</li>
+                    <li>Streamlined CI/CD pipelines using Azure DevOps to automate testing and deployment of ETL workflows</li>
+                    <li>Collaborated with cross-functional teams to design and evaluate A/B tests on user engagement metrics</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>The Cigna Group</h3>
+                <div class="job-title">Data Analyst</div>
+                <div class="date-location">May 2023 - February 2024 | Boston, Massachusetts</div>
+                <ul>
+                    <li>Led efforts in schema design and data integration across multiple platforms to support enterprise analytics initiatives</li>
+                    <li>Collaborated with Agile teams to implement time series forecasting models using Numpy, Pandas and Matplotlib, improving predictive accuracy</li>
+                    <li>Developed and maintained dimensional data models and semantic layers using MicroStrategy</li>
+                    <li>Generated compelling and interactive dashboards utilizing Tableau and Power BI, increasing reporting efficiency by 40%</li>
+                    <li>Leveraged SAS and SAS Enterprise Miner to perform complex statistical analysis, enhancing decision-making for marketing campaigns by 20%</li>
+                    <li>Supervised the strategic migration of critical data storage solutions to robust cloud platforms including AWS and Azure</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Tata Capital</h3>
+                <div class="job-title">Data Analyst</div>
+                <div class="date-location">September 2019 - August 2022 | Hyderabad, India</div>
+                <ul>
+                    <li>Controlled a team through Waterfall project execution, completing a multi-phase data transformation project ahead of schedule by 15%</li>
+                    <li>Developed custom data pipelines using Hadoop, MapReduce, and Apache Spark, reducing data processing times by 50%</li>
+                    <li>Designed SQL queries in Oracle SQL Developer leading to a 15% improvement in operational efficiency</li>
+                    <li>Created dynamic dashboards in Tableau and Power BI that contributed to a 20% improvement in data-driven decision-making</li>
+                    <li>Managed end-to-end data cleaning and wrangling processes, ensuring a 30% increase in data quality</li>
+                    <li>Streamlined the migration and optimization of data workflows using Apache Airflow, improving pipeline efficiency by 30%</li>
+                    <li>Deployed machine learning algorithms through SAS and SAS Enterprise Miner to predict customer behavior, increasing retention by 12%</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">SAS</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & Big Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS (EC2, S3, Lambda)</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">Hadoop</span>
+                        <span class="skill-tag">Spark</span>
+                        <span class="skill-tag">Hive</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Warehousing</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">AWS Redshift</span>
+                        <span class="skill-tag">Apache Airflow</span>
+                        <span class="skill-tag">Informatica</span>
+                        <span class="skill-tag">Alteryx</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Visualization Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Qlik View</span>
+                        <span class="skill-tag">Excel</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Python Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">SciPy</span>
+                        <span class="skill-tag">Seaborn</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Oracle DB</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>CI/CD & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Azure DevOps</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Methodologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SDLC</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">Waterfall</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div class="certifications">
+                <div class="cert-card">
+                    <h3>Microsoft Certified: Power BI Data Analyst Associate</h3>
+                    <p>PL-300</p>
+                </div>
+                <div class="cert-card">
+                    <h3>Microsoft Certified: Azure Data Engineer Associate</h3>
+                    <p>DP-203</p>
+                </div>
+                <div class="cert-card">
+                    <h3>Tata Group - Data Visualisation</h3>
+                    <p>Empowering Business with Effective Insights</p>
+                </div>
+                <div class="cert-card">
+                    <h3>British Airways - Data Science</h3>
+                    <p>Job Simulation</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Boston University</h3>
+                <div class="job-title">Masters in Computer Information Systems</div>
+            </div>
+            <div class="education-item">
+                <h3>Chaitanya Bharathi Institute Of Technology</h3>
+                <div class="job-title">Bachelor of Engineering</div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Shashank A. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Built with passion for data and technology</p>
+    </footer>
+</body>
+</html>
